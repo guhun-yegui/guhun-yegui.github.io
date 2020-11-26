@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[65],{965:function(t,n,e){"use strict";e.r(n);var a={components:{XwBmap:e(368).a},data:function(){return{}}},i=e(40),c=Object(i.a)(a,(function(){var t=this.$createElement,n=this._self._c||t;return n("div",{staticStyle:{width:"100%",height:"300px"}},[n("xw-bmap")],1)}),[],!1,null,null,null);n.default=c.exports}}]);
