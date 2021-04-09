@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vuepress-plugin-blog-multidir | 孤魂野鬼</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="Build your blog through multiple folders for vuepress">
+    
+    <link rel="preload" href="/assets/css/0.styles.240191bc.css" as="style"><link rel="preload" href="/assets/js/app.3d76726c.js" as="script"><link rel="preload" href="/assets/js/6.5a7df9c0.js" as="script"><link rel="prefetch" href="/assets/js/10.c6ca2a62.js"><link rel="prefetch" href="/assets/js/11.a42a47de.js"><link rel="prefetch" href="/assets/js/12.48471c4d.js"><link rel="prefetch" href="/assets/js/13.8fabf83f.js"><link rel="prefetch" href="/assets/js/14.398515d2.js"><link rel="prefetch" href="/assets/js/15.04a4af6c.js"><link rel="prefetch" href="/assets/js/2.e8f54097.js"><link rel="prefetch" href="/assets/js/3.48b4ec34.js"><link rel="prefetch" href="/assets/js/4.e0702ea8.js"><link rel="prefetch" href="/assets/js/5.ec5d495a.js"><link rel="prefetch" href="/assets/js/7.12c33989.js"><link rel="prefetch" href="/assets/js/8.67203ce6.js"><link rel="prefetch" href="/assets/js/9.1fd846b1.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.240191bc.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><section id="global-layout" data-v-98a81704><header class="header" data-v-652413d0 data-v-98a81704><div class="header-navbar" data-v-652413d0><div class="flex-xbc main header-nav" data-v-652413d0><div class="nav-link" data-v-652413d0><a href="/" class="inblock link-logo router-link-active" data-v-652413d0><img data-src="/111.jpeg" loading="lazy" alt="logo" class="logo-img lazy" data-v-652413d0></a> <nav class="link-list" data-v-652413d0><a href="/" class="list-item router-link-active" data-v-652413d0>主页</a><a href="/posts/" class="list-item" data-v-652413d0>博客</a><a href="/doc/" class="list-item router-link-active" data-v-652413d0>项目</a><a href="/tag/" class="list-item" data-v-652413d0>组件</a></nav></div> <div class="search-box" data-v-652413d0><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div></div> </header> <!----> <section class="page" data-v-98a81704 data-v-98a81704><section class="info no-bg" data-v-77ce606b><article class="main info-content" data-v-09525e5c data-v-77ce606b><div class="content-header" data-v-09525e5c><h1 class="header-title" data-v-09525e5c>vuepress-plugin-blog-multidir</h1></div> <div class="flex-wcc content-tag" data-v-09525e5c><div class="inblock tag-list" data-v-09525e5c><a href="/category/documentation/" class="tag-text" data-v-09525e5c>documentation
+      </a></div> <span class="tag-space" data-v-09525e5c>/</span> <div class="inblock tag-list" data-v-09525e5c><a href="/tag/vue/" class="tag-text" data-v-09525e5c>vue
+      </a><a href="/tag/vuepress/" class="tag-text" data-v-09525e5c>vuepress
+      </a></div></div> <div class="content content__default" data-v-09525e5c><blockquote><p>Build your blog through multiple folders</p></blockquote> <p><strong>This plugin is for Vuepress 1.01</strong></p> <h2 id="installation"><a href="#installation" class="header-anchor">#</a> Installation</h2> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">yarn</span> <span class="token function">add</span> vuepress-plugin-blog-multidir
+<span class="token comment"># or</span>
+<span class="token function">npm</span> i vuepress-plugin-blog-multidir
+</code></pre></div><h2 id="usage"><a href="#usage" class="header-anchor">#</a> Usage</h2> <div class="language-js extra-class"><div class="highlight-lines"><br><br><div class="highlighted"> </div><br><br><br></div><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'blog-multidir'</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><a href="https://v1.vuepress.vuejs.org/plugin/using-a-plugin.html" target="_blank" rel="noopener noreferrer"> Vuepress documentation<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="options"><a href="#options" class="header-anchor">#</a> Options</h2> <h3 id="aliasesroot"><a href="#aliasesroot" class="header-anchor">#</a> aliasesRoot</h3> <ul><li><p>Type: <code>string</code></p></li> <li><p>default: <code>:root</code></p> <p><strong>Can't have the same name as your folder</strong>  (For internal use only).</p></li></ul> <h3 id="categoryindexpageurl"><a href="#categoryindexpageurl" class="header-anchor">#</a> categoryIndexPageUrl</h3> <ul><li>Type: <code>string</code></li> <li>Default: <code>/category/</code></li></ul> <h3 id="tagindexpageurl"><a href="#tagindexpageurl" class="header-anchor">#</a> tagIndexPageUrl</h3> <ul><li>Type: <code>string</code></li> <li>Default: <code>/tag/</code></li></ul> <h3 id="categorylayout"><a href="#categorylayout" class="header-anchor">#</a> categoryLayout</h3> <ul><li>Type: <code>string</code></li> <li>Default: <code>Tag</code></li></ul> <h3 id="taglayout"><a href="#taglayout" class="header-anchor">#</a> tagLayout</h3> <ul><li>Type: <code>string</code></li> <li>Default: <code>Tag</code></li></ul> <h3 id="postlayout"><a href="#postlayout" class="header-anchor">#</a> postLayout</h3> <ul><li>Type: <code>string</code></li> <li>Default: <code>Page</code></li></ul> <h3 id="postsdir"><a href="#postsdir" class="header-anchor">#</a> postsDir</h3> <ul><li><p>Type: <code>string</code>, <code>array</code>, <code>Object</code></p></li> <li><p>Default: <code>posts</code></p> <p><strong>Configures the permalink generated for you folder.</strong></p></li></ul> <p>example</p> <div class="language-js extra-class"><pre class="language-js"><code>postsDir <span class="token operator">=</span> <span class="token string">'posts'</span>
+<span class="token comment">// or</span>
+postsDir <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'posts1'</span><span class="token punctuation">,</span> <span class="token string">'posts2'</span><span class="token punctuation">,</span> <span class="token string">'posts3'</span><span class="token punctuation">]</span>
+<span class="token comment">// or { path: permalink }</span>
+postsDir <span class="token operator">=</span> <span class="token punctuation">{</span>
+  posts1<span class="token operator">:</span> <span class="token string">':year'</span><span class="token punctuation">,</span>
+  posts2<span class="token operator">:</span> <span class="token string">':month'</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="permalink"><a href="#permalink" class="header-anchor">#</a> permalink</h3> <ul><li><p>Type: <code>string</code>, <code>boolean(false)</code></p></li> <li><p>Default: <code>false</code></p> <p>See <a href="https://v1.vuepress.vuejs.org/guide/permalinks.html#template-variables" target="_blank" rel="noopener noreferrer">Permalinks<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> for a list of valid variables.</p></li></ul> <h3 id="postssorter"><a href="#postssorter" class="header-anchor">#</a> postsSorter</h3> <ul><li>Type: <code>function</code></li> <li>Default:</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">prev<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> prevTime <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>prev<span class="token punctuation">.</span>frontmatter<span class="token punctuation">.</span>date<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> nextTime <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>next<span class="token punctuation">.</span>frontmatter<span class="token punctuation">.</span>date<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> prevTime <span class="token operator">-</span> nextTime <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">:</span> <span class="token number">1</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="paginationdir"><a href="#paginationdir" class="header-anchor">#</a> paginationDir</h3> <ul><li>Type: <code>boolean</code>, <code>string</code>, <code>array</code></li> <li>Default: <code>true</code></li></ul> <p>example</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  paginationDir<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token comment">// Enable all paging</span>
+  <span class="token comment">// or</span>
+  paginationDir<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token comment">// Cancel all pages</span>
+  <span class="token comment">// or</span>
+  paginationDir<span class="token operator">:</span> <span class="token string">'posts'</span> <span class="token comment">// Enable single paging for `posts` folder</span>
+  <span class="token comment">// or</span>
+  paginationDir<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'posts1'</span><span class="token punctuation">,</span> <span class="token string">'posts2'</span><span class="token punctuation">]</span> <span class="token comment">// Enable multiple paging</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="paginationlimit"><a href="#paginationlimit" class="header-anchor">#</a> paginationLimit</h3> <ul><li>Type: <code>number</code></li> <li>Default: <code>12</code></li></ul> <h3 id="paginatiopath"><a href="#paginatiopath" class="header-anchor">#</a> paginatioPath</h3> <ul><li>Type: <code>string</code></li> <li>Default: <code>page/</code></li></ul> <h2 id="computed"><a href="#computed" class="header-anchor">#</a> computed</h2> <h3 id="pluginconfig"><a href="#pluginconfig" class="header-anchor">#</a> $pluginConfig</h3> <p>Plugin config information</p> <h3 id="tags"><a href="#tags" class="header-anchor">#</a> $tags</h3> <p>Page information sorted by tags</p> <h3 id="categories"><a href="#categories" class="header-anchor">#</a> $categories</h3> <p>Page information sorted by categories</p> <h3 id="lists"><a href="#lists" class="header-anchor">#</a> $lists</h3> <p>Page information sorted by folders</p> <h3 id="list"><a href="#list" class="header-anchor">#</a> $list</h3> <p>If you are in the pagination page. you can get</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  pageKeys<span class="token punctuation">,</span>
+  pagination<span class="token punctuation">,</span>
+  path<span class="token punctuation">,</span>
+  posts
+<span class="token punctuation">}</span>
+</code></pre></div><p>or If you are in the post page. you can get</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  index<span class="token punctuation">,</span>
+  total<span class="token punctuation">,</span>
+  dir<span class="token punctuation">,</span>
+  lastPost<span class="token punctuation">,</span>
+  nextPost
+<span class="token punctuation">}</span>
+</code></pre></div><p>from <code>this.$list</code></p> <h2 id="attention"><a href="#attention" class="header-anchor">#</a> attention</h2> <p>::: tip TIP
+<strong>You don't need to create a <code>index.md(or README.md)</code> file in a folder that needs Pagination</strong>
+:::</p> <div class="language- extra-class"><pre class="language-text"><code>+- blog
+  +- posts
+    +- test.md
+    ...
+  ...
+  +- about
+    +- index.md
+</code></pre></div><p>or set <code>layout</code></p> <div class="language-md extra-class"><pre class="language-md"><code>// about -&gt; index.md
+
+<span class="token hr punctuation">---</span>
+<span class="token title important">layout: Page
+<span class="token punctuation">---</span></span>
+</code></pre></div><hr> <p>You need to use <code>display</code> to control where the current article is displayed</p> <div class="language-md extra-class"><pre class="language-md"><code>// posts -&gt; test.md
+
+<span class="token hr punctuation">---</span>
+<span class="token title important">display: home
+<span class="token punctuation">---</span></span>
+</code></pre></div><p>A list of home pages will displayed.</p> <div class="language-md extra-class"><pre class="language-md"><code>// posts -&gt; test.md
+
+<span class="token hr punctuation">---</span>
+<span class="token title important">display: none
+<span class="token punctuation">---</span></span>
+</code></pre></div><p>It will not be displayed.</p> <p>However, you can still access it through the right path.</p> <hr> <p>If you are in the pagination page. you can get the current page by <code>this.$route.meta.current</code>.</p> <h2 id="license"><a href="#license" class="header-anchor">#</a> License</h2> <p><a href="http://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="keywords"><a href="#keywords" class="header-anchor">#</a> Keywords</h2> <p>vue vuepress plugin blog blog-multidir</p></div> <div class="content-time" data-v-09525e5c><time datetime="2019 M03 9" class="time-text" data-v-09525e5c>Create Time: 2019 M03 9
+    </time> <time datetime="2021 M04 9" class="time-text" data-v-09525e5c>Last Updated: 2021 M04 9
+    </time></div></article> <section class="flex-xb main info-nav" data-v-203269c1 data-v-77ce606b><a href="/doc/vuepress-plugin-img-lazy.html" class="flex-xb nav-item" data-v-203269c1><div class="flex-xcc item-img" data-v-203269c1><img data-src="https://picsum.photos/536/354?random&amp;date=2019-09-21" loading="lazy" alt="面试-js部分" class="img lazy" data-v-203269c1></div> <article class="flex-ysc item-content" data-v-203269c1><h2 class="content-title" data-v-203269c1>面试-js部分</h2> <div class="content" data-v-203269c1><blockquote>
+<p>面试题之 JS 部分</p>
+</blockquote>
+</div></article></a> <a href="/doc/vuepress-theme-ououe.html" class="flex-xb nav-item" data-v-203269c1><div class="flex-xcc item-img" data-v-203269c1><img data-src="https://picsum.photos/1920/1080/?random&amp;date=2019-02-22" loading="lazy" alt="vuepress-theme-ououe" class="img lazy" data-v-203269c1></div> <article class="flex-ysc item-content" data-v-203269c1><h2 class="content-title" data-v-203269c1>vuepress-theme-ououe</h2> <div class="content" data-v-203269c1><blockquote>
+<p>A blog theme for VuePress</p>
+</blockquote>
+<p><strong>This plugin is for Vuepress 1.0</strong></p>
+</div></article></a></section> <!----></section></section> <footer class="footer" data-v-109158d8 data-v-98a81704><nav class="link-list" data-v-109158d8><a href="https://github.com/guhun-yegui" target="_blank" rel="noopener noreferrer" class="list-item" data-v-109158d8>Github</a></nav></footer></section><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.3d76726c.js" defer></script><script src="/assets/js/6.5a7df9c0.js" defer></script>
+  </body>
+</html>
