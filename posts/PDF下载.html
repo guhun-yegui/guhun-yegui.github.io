@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>PDF下载 | 孤魂野鬼</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="PDF下载">
+    
+    <link rel="preload" href="/assets/css/0.styles.240191bc.css" as="style"><link rel="preload" href="/assets/js/app.e75cd74a.js" as="script"><link rel="preload" href="/assets/js/11.a5d11458.js" as="script"><link rel="prefetch" href="/assets/js/10.34457a4d.js"><link rel="prefetch" href="/assets/js/12.b6ac574c.js"><link rel="prefetch" href="/assets/js/13.ef0f949f.js"><link rel="prefetch" href="/assets/js/14.5b9d126e.js"><link rel="prefetch" href="/assets/js/15.7589f8dd.js"><link rel="prefetch" href="/assets/js/16.6c10bde0.js"><link rel="prefetch" href="/assets/js/17.ab781f09.js"><link rel="prefetch" href="/assets/js/18.6d39bbb0.js"><link rel="prefetch" href="/assets/js/19.3488a42b.js"><link rel="prefetch" href="/assets/js/2.d3df92e8.js"><link rel="prefetch" href="/assets/js/20.935a0fb2.js"><link rel="prefetch" href="/assets/js/21.4b69a6f3.js"><link rel="prefetch" href="/assets/js/22.8ab81e2f.js"><link rel="prefetch" href="/assets/js/3.5e862655.js"><link rel="prefetch" href="/assets/js/4.002d925e.js"><link rel="prefetch" href="/assets/js/5.8d5757d5.js"><link rel="prefetch" href="/assets/js/6.ad2eb919.js"><link rel="prefetch" href="/assets/js/7.79b69e8c.js"><link rel="prefetch" href="/assets/js/8.5ebade92.js"><link rel="prefetch" href="/assets/js/9.940b8afd.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.240191bc.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><section id="global-layout" data-v-98a81704><header class="header" data-v-652413d0 data-v-98a81704><div class="header-navbar" data-v-652413d0><div class="flex-xbc main header-nav" data-v-652413d0><div class="nav-link" data-v-652413d0><a href="/" class="inblock link-logo router-link-active" data-v-652413d0><img data-src="/111.jpeg" loading="lazy" alt="logo" class="logo-img lazy" data-v-652413d0></a> <nav class="link-list" data-v-652413d0><a href="/" class="list-item router-link-active" data-v-652413d0>主页</a><a href="/posts/" class="list-item router-link-active" data-v-652413d0>博客</a><a href="/doc/" class="list-item" data-v-652413d0>项目</a><a href="/tag/" class="list-item" data-v-652413d0>组件</a></nav></div> <div class="search-box" data-v-652413d0><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div></div> </header> <!----> <section class="page" data-v-98a81704 data-v-98a81704><section class="info no-bg" data-v-77ce606b><article class="main info-content" data-v-09525e5c data-v-77ce606b><div class="content-header" data-v-09525e5c><h1 class="header-title" data-v-09525e5c>PDF下载</h1></div> <div class="flex-wcc content-tag" data-v-09525e5c><div class="inblock tag-list" data-v-09525e5c><a href="/category/PDF/" class="tag-text" data-v-09525e5c>PDF
+      </a></div> <span class="tag-space" data-v-09525e5c>/</span> <div class="inblock tag-list" data-v-09525e5c><a href="/tag/技术/" class="tag-text" data-v-09525e5c>技术
+      </a></div></div> <div class="content content__default" data-v-09525e5c><blockquote><p>PDF 下载</p></blockquote> <p></p><div class="table-of-contents"><ul><li><a href="#_1-pdf-下载">1.PDF 下载</a></li></ul></div><p></p> <h2 id="_1-pdf-下载"><a href="#_1-pdf-下载" class="header-anchor">#</a> 1.PDF 下载</h2> <blockquote><p>使用 'dom-to-image'，'jspdf'两个插件</p></blockquote> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> domtoimage <span class="token keyword">from</span> <span class="token string">'dom-to-image'</span>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> jsPDF <span class="token keyword">from</span> <span class="token string">'jspdf'</span>
+
+
+<span class="token keyword">let</span> curLength <span class="token operator">=</span> <span class="token number">8</span>  <span class="token comment">//页面数</span>
+    domtoimage
+      <span class="token punctuation">.</span><span class="token function">toJpeg</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pagehtml<span class="token punctuation">,</span> <span class="token punctuation">{</span> quality<span class="token operator">:</span> <span class="token number">0.95</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>  <span class="token comment">//把对应的HTML转换成图片</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">dataUrl</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> pageHeight <span class="token operator">=</span> <span class="token number">594.88</span>  <span class="token comment">//一页的高度</span>
+        <span class="token comment">// 总高度</span>
+        <span class="token keyword">var</span> leftHeight <span class="token operator">=</span> pageHeight <span class="token operator">*</span> curLength
+        <span class="token comment">//  pdf页面偏移</span>
+        <span class="token keyword">var</span> position <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token comment">//html页面生成的canvas在pdf中图片的宽高（a4纸的尺寸[595.28,841.89]）</span>
+        <span class="token keyword">var</span> imgWidth <span class="token operator">=</span> <span class="token number">841.89</span>
+        <span class="token comment">// PDF总高度</span>
+        <span class="token keyword">var</span> imgHeight <span class="token operator">=</span> <span class="token number">595.28</span> <span class="token operator">*</span> curLength
+        <span class="token keyword">var</span> pageData <span class="token operator">=</span> dataUrl
+        <span class="token keyword">var</span> pdf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">jsPDF<span class="token punctuation">.</span>default</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          orientation<span class="token operator">:</span> <span class="token string">'landscape'</span><span class="token punctuation">,</span>
+          unit<span class="token operator">:</span> <span class="token string">'pt'</span><span class="token punctuation">,</span>
+          format<span class="token operator">:</span> <span class="token punctuation">[</span>imgWidth<span class="token punctuation">,</span> <span class="token number">595.28</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token comment">// 有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)</span>
+        <span class="token comment">//当内容未超过pdf一页显示的范围，无需分页</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>leftHeight <span class="token operator">&lt;</span> pageHeight<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          pdf<span class="token punctuation">.</span><span class="token function">addImage</span><span class="token punctuation">(</span>pageData<span class="token punctuation">,</span> <span class="token string">'JPEG'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> imgWidth<span class="token punctuation">,</span> imgHeight<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          <span class="token keyword">while</span> <span class="token punctuation">(</span>leftHeight <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            pdf<span class="token punctuation">.</span><span class="token function">addImage</span><span class="token punctuation">(</span>pageData<span class="token punctuation">,</span> <span class="token string">'JPEG'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> position<span class="token punctuation">,</span> imgWidth<span class="token punctuation">,</span> imgHeight<span class="token punctuation">)</span>
+            leftHeight <span class="token operator">-=</span> pageHeight
+            position <span class="token operator">-=</span> <span class="token number">595.28</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>leftHeight <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              pdf<span class="token punctuation">.</span><span class="token function">addPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        pdf<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">分析报告</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">moment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'YYYYMMDD'</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.pdf</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+
+      <span class="token operator">&lt;</span>div ref<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>pagehtml <span class="token operator">=</span> node<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">/</span><span class="token operator">&gt;</span>
+
+</code></pre></div></div> <div class="content-time" data-v-09525e5c><time datetime="2019 M09 21" class="time-text" data-v-09525e5c>Create Time: 2019 M09 21
+    </time> <time datetime="2021 M04 19" class="time-text" data-v-09525e5c>Last Updated: 2021 M04 19
+    </time></div></article> <section class="flex-xb main info-nav" data-v-203269c1 data-v-77ce606b><a href="/posts/postCss%E9%80%82%E9%85%8D.html" class="flex-xb nav-item" data-v-203269c1><div class="flex-xcc item-img" data-v-203269c1><img data-src="https://picsum.photos/536/354?random&amp;date=2021-04-10" loading="lazy" alt="postCss适配" class="img lazy" data-v-203269c1></div> <article class="flex-ysc item-content" data-v-203269c1><h2 class="content-title" data-v-203269c1>postCss适配</h2> <div class="content" data-v-203269c1><blockquote>
+<p>postCss 适配</p>
+</blockquote>
+</div></article></a> <a href="/posts/promise%E8%AF%A6%E8%A7%A3.html" class="flex-xb nav-item" data-v-203269c1><div class="flex-xcc item-img" data-v-203269c1><img data-src="https://picsum.photos/536/354?random&amp;date=2021-04-10" loading="lazy" alt="promise详解" class="img lazy" data-v-203269c1></div> <article class="flex-ysc item-content" data-v-203269c1><h2 class="content-title" data-v-203269c1>promise详解</h2> <div class="content" data-v-203269c1><blockquote>
+<p>promise 详解</p>
+</blockquote>
+</div></article></a></section> <!----></section></section> <footer class="footer" data-v-109158d8 data-v-98a81704><nav class="link-list" data-v-109158d8><a href="https://github.com/guhun-yegui" target="_blank" rel="noopener noreferrer" class="list-item" data-v-109158d8>Github</a></nav></footer></section><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.e75cd74a.js" defer></script><script src="/assets/js/11.a5d11458.js" defer></script>
+  </body>
+</html>
