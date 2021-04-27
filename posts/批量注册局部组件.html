@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>批量注册局部组件 | 孤魂野鬼</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="批量注册局部组件">
+    
+    <link rel="preload" href="/assets/css/0.styles.da54cbe1.css" as="style"><link rel="preload" href="/assets/js/app.d03a1a55.js" as="script"><link rel="preload" href="/assets/js/22.c3debecc.js" as="script"><link rel="prefetch" href="/assets/js/10.fbc0cbb3.js"><link rel="prefetch" href="/assets/js/11.fd8c4412.js"><link rel="prefetch" href="/assets/js/12.9bbef4f5.js"><link rel="prefetch" href="/assets/js/13.68cd7f18.js"><link rel="prefetch" href="/assets/js/14.59e1dfc1.js"><link rel="prefetch" href="/assets/js/15.ad81cd06.js"><link rel="prefetch" href="/assets/js/16.061aa262.js"><link rel="prefetch" href="/assets/js/17.27e55b65.js"><link rel="prefetch" href="/assets/js/18.6cae4b3e.js"><link rel="prefetch" href="/assets/js/19.7d8e0a12.js"><link rel="prefetch" href="/assets/js/2.38c21fec.js"><link rel="prefetch" href="/assets/js/20.e07cd30c.js"><link rel="prefetch" href="/assets/js/21.395afcff.js"><link rel="prefetch" href="/assets/js/23.1664c600.js"><link rel="prefetch" href="/assets/js/24.c1c4e059.js"><link rel="prefetch" href="/assets/js/25.9fc031ef.js"><link rel="prefetch" href="/assets/js/3.5e862655.js"><link rel="prefetch" href="/assets/js/4.177b9d40.js"><link rel="prefetch" href="/assets/js/5.8d5757d5.js"><link rel="prefetch" href="/assets/js/6.41e2756a.js"><link rel="prefetch" href="/assets/js/7.2cf520b1.js"><link rel="prefetch" href="/assets/js/8.c29a5632.js"><link rel="prefetch" href="/assets/js/9.53a76d4c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.da54cbe1.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><section id="global-layout" data-v-98a81704><header class="header" data-v-652413d0 data-v-98a81704><div class="header-navbar" data-v-652413d0><div class="flex-xbc main header-nav" data-v-652413d0><div class="nav-link" data-v-652413d0><a href="/" class="inblock link-logo router-link-active" data-v-652413d0><img data-src="/111.jpeg" loading="lazy" alt="logo" class="logo-img lazy" data-v-652413d0></a> <nav class="link-list" data-v-652413d0><a href="/" class="list-item router-link-active" data-v-652413d0>主页</a><a href="/posts/" class="list-item router-link-active" data-v-652413d0>博客</a><a href="/mianshi/" class="list-item" data-v-652413d0>面试</a><a href="/doc/" class="list-item" data-v-652413d0>项目</a><a href="/tag/" class="list-item" data-v-652413d0>组件</a></nav></div> <div class="search-box" data-v-652413d0><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div></div> </header> <!----> <section class="page" data-v-98a81704 data-v-98a81704><section class="info no-bg" data-v-77ce606b><article class="main info-content" data-v-09525e5c data-v-77ce606b><div class="content-header" data-v-09525e5c><h1 class="header-title" data-v-09525e5c>批量注册局部组件</h1></div> <div class="flex-wcc content-tag" data-v-09525e5c><div class="inblock tag-list" data-v-09525e5c><a href="/category/经验/" class="tag-text" data-v-09525e5c>经验
+      </a></div> <span class="tag-space" data-v-09525e5c>/</span> <div class="inblock tag-list" data-v-09525e5c><a href="/tag/vue/" class="tag-text" data-v-09525e5c>vue
+      </a></div></div> <div class="content content__default" data-v-09525e5c><blockquote><p>在做动态表单或者某些组件化的业务时，会自定义大量组件。如何批量注册和使用</p></blockquote> <blockquote><p>利用 require.context 读取文件,形成列表，直接全部放进 component 里。然后用 component 动态组件去挂载</p></blockquote> <p>require.context()方法是 webpack 的一个 api，主要功能是自动导入文件，当导入文件过多时，使用该方法可以统一导入，避免导入不同文件时多行书导入语句，该函数接受三个参数，参数说明如下：
+require.context(path,isTraverseSubfolders,regExp)</p> <p>path:String 类型，读取文件的路径.
+isTraverseSubfolders：Boolean 类型，是否遍历文件的子目录
+regExp：RegExp 类型，匹配文件的正则</p> <p>文件目录</p> <ul><li><p>src</p> <ul><li><p>formComponents</p> <ul><li>Input //组件</li></ul></li></ul> <p>index.vue</p> <p>index.js</p></li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//index.js</span>
+<span class="token comment">//读取匹配所有formComponents的vue组件，名字前面加上form，然后全部导出</span>
+<span class="token keyword">const</span> files <span class="token operator">=</span> require<span class="token punctuation">.</span><span class="token function">context</span><span class="token punctuation">(</span><span class="token string">'./formComponents'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">.vue$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> switchList <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+files<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  switchList<span class="token punctuation">[</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">form</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>key<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'.vue'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.\/</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">files</span><span class="token punctuation">(</span>
+    key
+  <span class="token punctuation">)</span><span class="token punctuation">.</span>default
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span>switchList
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- 使用注册好的组件，也可以用动态组件去动态使用 --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form-input</span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token comment">//导入打包好的组件</span>
+  <span class="token keyword">import</span> components <span class="token keyword">from</span> <span class="token string">'./dynamicForm'</span>
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token comment">//全部注册</span>
+    components<span class="token operator">:</span> components<span class="token punctuation">,</span>
+    props<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'components'</span><span class="token punctuation">,</span> components<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    methods<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div></div> <div class="content-time" data-v-09525e5c><time datetime="2019 M09 21" class="time-text" data-v-09525e5c>Create Time: 2019 M09 21
+    </time> <time datetime="2021 M04 27" class="time-text" data-v-09525e5c>Last Updated: 2021 M04 27
+    </time></div></article> <section class="flex-xb main info-nav" data-v-203269c1 data-v-77ce606b><a href="/posts/promise%E8%AF%A6%E8%A7%A3.html" class="flex-xb nav-item" data-v-203269c1><div class="flex-xcc item-img" data-v-203269c1><img data-src="https://picsum.photos/536/354?random&amp;date=2021-04-10" loading="lazy" alt="promise详解" class="img lazy" data-v-203269c1></div> <article class="flex-ysc item-content" data-v-203269c1><h2 class="content-title" data-v-203269c1>promise详解</h2> <div class="content" data-v-203269c1><blockquote>
+<p>promise 详解</p>
+</blockquote>
+</div></article></a> <a href="/posts/%E6%9C%80%E6%96%B0%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95.html" class="flex-xb nav-item" data-v-203269c1><div class="flex-xcc item-img" data-v-203269c1><img data-src="https://picsum.photos/536/354?random&amp;date=2021-04-17" loading="lazy" alt="最新数组方法" class="img lazy" data-v-203269c1></div> <article class="flex-ysc item-content" data-v-203269c1><h2 class="content-title" data-v-203269c1>最新数组方法</h2> <div class="content" data-v-203269c1></div></article></a></section> <!----></section></section> <footer class="footer" data-v-109158d8 data-v-98a81704><nav class="link-list" data-v-109158d8><a href="https://github.com/guhun-yegui" target="_blank" rel="noopener noreferrer" class="list-item" data-v-109158d8>Github</a></nav></footer></section><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.d03a1a55.js" defer></script><script src="/assets/js/22.c3debecc.js" defer></script>
+  </body>
+</html>
