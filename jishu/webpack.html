@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpack | 孤魂野鬼</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="webpack">
+    
+    <link rel="preload" href="/assets/css/0.styles.da54cbe1.css" as="style"><link rel="preload" href="/assets/js/app.172e24a5.js" as="script"><link rel="preload" href="/assets/js/12.ccd285be.js" as="script"><link rel="prefetch" href="/assets/js/10.a46cc7b0.js"><link rel="prefetch" href="/assets/js/11.f631a26f.js"><link rel="prefetch" href="/assets/js/13.66b48505.js"><link rel="prefetch" href="/assets/js/14.7a692b1e.js"><link rel="prefetch" href="/assets/js/15.7797605f.js"><link rel="prefetch" href="/assets/js/16.6509f109.js"><link rel="prefetch" href="/assets/js/17.1cd4fcd5.js"><link rel="prefetch" href="/assets/js/18.fcd57cd9.js"><link rel="prefetch" href="/assets/js/19.402d3439.js"><link rel="prefetch" href="/assets/js/2.38c21fec.js"><link rel="prefetch" href="/assets/js/20.1125ea3d.js"><link rel="prefetch" href="/assets/js/21.fc6aacc8.js"><link rel="prefetch" href="/assets/js/22.e5d4ec5e.js"><link rel="prefetch" href="/assets/js/23.ea6133e1.js"><link rel="prefetch" href="/assets/js/24.c4605bbd.js"><link rel="prefetch" href="/assets/js/25.55395884.js"><link rel="prefetch" href="/assets/js/26.4abfc3f9.js"><link rel="prefetch" href="/assets/js/27.693523fb.js"><link rel="prefetch" href="/assets/js/28.094d70c8.js"><link rel="prefetch" href="/assets/js/3.5e862655.js"><link rel="prefetch" href="/assets/js/4.640f94fb.js"><link rel="prefetch" href="/assets/js/5.8d5757d5.js"><link rel="prefetch" href="/assets/js/6.41e2756a.js"><link rel="prefetch" href="/assets/js/7.5db10605.js"><link rel="prefetch" href="/assets/js/8.4e0a33b6.js"><link rel="prefetch" href="/assets/js/9.4e8a4dfd.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.da54cbe1.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><section id="global-layout" data-v-98a81704><header class="header" data-v-652413d0 data-v-98a81704><div class="header-navbar" data-v-652413d0><div class="flex-xbc main header-nav" data-v-652413d0><div class="nav-link" data-v-652413d0><a href="/" class="inblock link-logo router-link-active" data-v-652413d0><img data-src="/111.jpeg" loading="lazy" alt="logo" class="logo-img lazy" data-v-652413d0></a> <nav class="link-list" data-v-652413d0><a href="/" class="list-item router-link-active" data-v-652413d0>主页</a><a href="/posts/" class="list-item" data-v-652413d0>博客</a><a href="/jishu/" class="list-item router-link-active" data-v-652413d0>技术</a><a href="/doc/" class="list-item" data-v-652413d0>项目</a><a href="/tag/" class="list-item" data-v-652413d0>组件</a></nav></div> <div class="search-box" data-v-652413d0><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div></div> </header> <!----> <section class="page" data-v-98a81704 data-v-98a81704><section class="info no-bg" data-v-77ce606b><article class="main info-content" data-v-09525e5c data-v-77ce606b><div class="content-header" data-v-09525e5c><h1 class="header-title" data-v-09525e5c>webpack</h1></div> <div class="flex-wcc content-tag" data-v-09525e5c><div class="inblock tag-list" data-v-09525e5c><a href="/category/技术/" class="tag-text" data-v-09525e5c>技术
+      </a></div> <span class="tag-space" data-v-09525e5c>/</span> <div class="inblock tag-list" data-v-09525e5c><a href="/tag/webpack/" class="tag-text" data-v-09525e5c>webpack
+      </a></div></div> <div class="content content__default" data-v-09525e5c><blockquote><p>算法</p></blockquote> <p></p><div class="table-of-contents"><ul><li><a href="#_1-webpack-优化">1. webpack 优化</a></li></ul></div><p></p> <h2 id="_1-webpack-优化"><a href="#_1-webpack-优化" class="header-anchor">#</a> 1. webpack 优化</h2> <blockquote><p>https://blog.csdn.net/weixin_33873846/article/details/88036345</p></blockquote> <p>对于 Loader 来说，影响打包效率首当其冲必属 Babel 了。因为 Babel 会将代码转为字符串生成 AST，然后对 AST 继续进行转变最后再生成新的代码，项目越大，转换代码越多，效率就越低。当然了，我们是有办法优化的。</p> <ol><li><p>加快打包速度</p> <p>首先我们可以优化 Loader 的文件搜索范围，在使用 loader 时,我们可以指定哪些文件不通过 loader 处理,或者指定哪些文件通过 loader 处理。</p> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  module<span class="token operator">:</span> <span class="token punctuation">{</span>
+    rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token comment">// js 文件才使用 babel</span>
+        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.js$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        use<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'babel-loader'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token comment">// 只处理src文件夹下面的文件</span>
+        include<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'src'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token comment">// 不处理node_modules下面的文件</span>
+        exclude<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">node_modules</span><span class="token regex-delimiter">/</span></span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li> <li><p>减少 Webpack 打包后的文件体积</p></li></ol> <blockquote><p>对图片进行压缩和优化</p></blockquote> <p>image-webpack-loader 这个 loder 可以帮助我们对打包后的图片进行压缩和优化，例如降低图片分辨率，压缩图片体积等。</p> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...省略其他配置</span>
+  module<span class="token operator">:</span> <span class="token punctuation">{</span>
+    rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(png|svg|jpg|gif|jpeg|ico)$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        use<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token string">'file-loader'</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
+            loader<span class="token operator">:</span> <span class="token string">'image-webpack-loader'</span><span class="token punctuation">,</span>
+            options<span class="token operator">:</span> <span class="token punctuation">{</span>
+              mozjpeg<span class="token operator">:</span> <span class="token punctuation">{</span>
+                progressive<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                quality<span class="token operator">:</span> <span class="token number">65</span>
+              <span class="token punctuation">}</span><span class="token punctuation">,</span>
+              optipng<span class="token operator">:</span> <span class="token punctuation">{</span>
+                enabled<span class="token operator">:</span> <span class="token boolean">false</span>
+              <span class="token punctuation">}</span><span class="token punctuation">,</span>
+              pngquant<span class="token operator">:</span> <span class="token punctuation">{</span>
+                quality<span class="token operator">:</span> <span class="token string">'65-90'</span><span class="token punctuation">,</span>
+                speed<span class="token operator">:</span> <span class="token number">4</span>
+              <span class="token punctuation">}</span><span class="token punctuation">,</span>
+              gifsicle<span class="token operator">:</span> <span class="token punctuation">{</span>
+                interlaced<span class="token operator">:</span> <span class="token boolean">false</span>
+              <span class="token punctuation">}</span><span class="token punctuation">,</span>
+              webp<span class="token operator">:</span> <span class="token punctuation">{</span>
+                quality<span class="token operator">:</span> <span class="token number">75</span>
+              <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>externals 外部扩展</p></blockquote> <p>从外部引入资源，或者在src外部放一个静态资源，从HTML中引入</p> <p>例如，从 CDN 引入 jQuery，而不是把它打包：
+index.html</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span>
+  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>https://code.jquery.com/jquery-3.1.0.js<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">integrity</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">crossorigin</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>anonymous<span class="token punctuation">&quot;</span></span>
+<span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>webpack.config.js</p> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  externals<span class="token operator">:</span> <span class="token punctuation">{</span>
+    jquery<span class="token operator">:</span> <span class="token string">'jQuery'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <div class="content-time" data-v-09525e5c><time datetime="2021 M06 21" class="time-text" data-v-09525e5c>Create Time: 2021 M06 21
+    </time> <time datetime="2021 M06 21" class="time-text" data-v-09525e5c>Last Updated: 2021 M06 21
+    </time></div></article> <section class="flex-xb main info-nav" data-v-203269c1 data-v-77ce606b><!----> <a href="/jishu/%E7%AC%94%E8%AF%95%E9%A2%98.html" class="flex-xb nav-item" data-v-203269c1><div class="flex-xcc item-img" data-v-203269c1><img data-src="https://picsum.photos/536/354?random&amp;date=2021-04-12" loading="lazy" alt="笔试题" class="img lazy" data-v-203269c1></div> <article class="flex-ysc item-content" data-v-203269c1><h2 class="content-title" data-v-203269c1>笔试题</h2> <div class="content" data-v-203269c1></div></article></a></section> <!----></section></section> <footer class="footer" data-v-109158d8 data-v-98a81704><nav class="link-list" data-v-109158d8><a href="https://github.com/guhun-yegui" target="_blank" rel="noopener noreferrer" class="list-item" data-v-109158d8>Github</a></nav></footer></section><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.172e24a5.js" defer></script><script src="/assets/js/12.ccd285be.js" defer></script>
+  </body>
+</html>
