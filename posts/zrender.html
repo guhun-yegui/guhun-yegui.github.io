@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>zrender的使用 | 孤魂野鬼</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="zrender的使用">
+    
+    <link rel="preload" href="/assets/css/0.styles.08f98970.css" as="style"><link rel="preload" href="/assets/js/app.6134664a.js" as="script"><link rel="preload" href="/assets/js/35.3586c8c3.js" as="script"><link rel="prefetch" href="/assets/js/10.570439b5.js"><link rel="prefetch" href="/assets/js/11.52d0d82c.js"><link rel="prefetch" href="/assets/js/12.7a92e481.js"><link rel="prefetch" href="/assets/js/13.51f46ed7.js"><link rel="prefetch" href="/assets/js/14.1c96754f.js"><link rel="prefetch" href="/assets/js/15.b43bae40.js"><link rel="prefetch" href="/assets/js/16.1b0a7f57.js"><link rel="prefetch" href="/assets/js/17.429a9aec.js"><link rel="prefetch" href="/assets/js/18.8da679a7.js"><link rel="prefetch" href="/assets/js/19.1d98c0d5.js"><link rel="prefetch" href="/assets/js/2.487577d5.js"><link rel="prefetch" href="/assets/js/20.b28fdf37.js"><link rel="prefetch" href="/assets/js/21.c29d8987.js"><link rel="prefetch" href="/assets/js/22.55a5bf32.js"><link rel="prefetch" href="/assets/js/23.bcfcfe6b.js"><link rel="prefetch" href="/assets/js/24.dc278c5b.js"><link rel="prefetch" href="/assets/js/25.c34988d3.js"><link rel="prefetch" href="/assets/js/26.dc2a02c6.js"><link rel="prefetch" href="/assets/js/27.fb584ef4.js"><link rel="prefetch" href="/assets/js/28.fab7b7c4.js"><link rel="prefetch" href="/assets/js/29.0ca04ebc.js"><link rel="prefetch" href="/assets/js/3.4a216758.js"><link rel="prefetch" href="/assets/js/30.531591b4.js"><link rel="prefetch" href="/assets/js/31.ea0eba24.js"><link rel="prefetch" href="/assets/js/32.f5e0e225.js"><link rel="prefetch" href="/assets/js/33.1bee13d9.js"><link rel="prefetch" href="/assets/js/34.acd41994.js"><link rel="prefetch" href="/assets/js/36.9f922425.js"><link rel="prefetch" href="/assets/js/37.3855a03a.js"><link rel="prefetch" href="/assets/js/38.178a4ac9.js"><link rel="prefetch" href="/assets/js/39.90d3f6f3.js"><link rel="prefetch" href="/assets/js/4.498c4dda.js"><link rel="prefetch" href="/assets/js/40.21e98b4e.js"><link rel="prefetch" href="/assets/js/41.6cf13886.js"><link rel="prefetch" href="/assets/js/42.4e63b73c.js"><link rel="prefetch" href="/assets/js/5.8bd2b851.js"><link rel="prefetch" href="/assets/js/6.200298ef.js"><link rel="prefetch" href="/assets/js/7.3cc83ec6.js"><link rel="prefetch" href="/assets/js/8.fbcfe335.js"><link rel="prefetch" href="/assets/js/9.cd05dd13.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.08f98970.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><section id="global-layout" data-v-98a81704><header class="header" data-v-597182b5 data-v-98a81704><div class="header-navbar" data-v-597182b5><div class="flex-xbc main header-nav" data-v-597182b5><div class="nav-link" data-v-597182b5><a href="/" class="inblock link-logo router-link-active" data-v-597182b5><img data-src="/111.jpeg" loading="lazy" alt="logo" class="logo-img lazy" data-v-597182b5></a> <nav class="link-list" data-v-597182b5><a href="/" class="list-item router-link-active" data-v-597182b5>主页</a><a href="/posts/" class="list-item router-link-active" data-v-597182b5>博客</a><a href="/jishu/" class="list-item" data-v-597182b5>技术</a><a href="/tag/" class="list-item" data-v-597182b5>标签</a></nav></div> <div class="search-box" data-v-597182b5><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <div class="login-content" data-v-597182b5><span data-v-597182b5>登陆</span> <span data-v-597182b5>/ 注册</span></div> <div data-v-597182b5><div data-v-597182b5></div></div></div></div> </header> <!----> <section class="page" data-v-98a81704 data-v-98a81704><section class="info no-bg" data-v-77ce606b><article class="main info-content" data-v-09525e5c data-v-77ce606b><div class="content-header" data-v-09525e5c><h1 class="header-title" data-v-09525e5c>zrender的使用</h1></div> <div class="flex-wcc content-tag" data-v-09525e5c><div class="inblock tag-list" data-v-09525e5c><a href="/category/canvas/" class="tag-text" data-v-09525e5c>canvas
+      </a></div> <span class="tag-space" data-v-09525e5c>/</span> <div class="inblock tag-list" data-v-09525e5c><a href="/tag/技术/" class="tag-text" data-v-09525e5c>技术
+      </a></div></div> <div class="content content__default" data-v-09525e5c><blockquote><p>zrender 的使用</p></blockquote> <p></p><div class="table-of-contents"><ul><li><a href="#_1-初始化">1. 初始化</a></li><li><a href="#_2-绘画及重绘">2.绘画及重绘</a></li><li><a href="#_3-画相位元素">3.画相位元素</a></li><li><a href="#_4-绘画的方法">4.绘画的方法</a></li></ul></div><p></p> <h2 id="_1-初始化"><a href="#_1-初始化" class="header-anchor">#</a> 1. 初始化</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">chartInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">//再rem适配的时候，页面缩放，希望canvas也跟着缩放</span>
+  <span class="token comment">// 获取根元素font-seize</span>
+  <span class="token keyword">let</span> fontSize <span class="token operator">=</span> <span class="token function">getComputedStyle</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>document<span class="token punctuation">.</span>documentElement<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">'font-size'</span><span class="token punctuation">]</span>
+  <span class="token comment">// 计算缩放比例，以rem基准值为100为例，fontsize110px就代表放大1.1倍</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>baseWidth <span class="token operator">=</span> <span class="token punctuation">(</span>fontSize<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> fontSize<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+  <span class="token comment">// 初始化zrender，这里的渲染模式是 svg，默认是canvas</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>zr <span class="token operator">=</span> zrender<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">zrender</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>index<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    devicePixelRatio<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    renderer<span class="token operator">:</span> <span class="token string">'svg'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token comment">// 创建一个group</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>allGroup <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// 把group添加进去</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>zr<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>allGroup<span class="token punctuation">)</span>
+  <span class="token comment">// 根据缩放去缩放整个最外面的allGroup，达到自适应的效果</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>allGroup<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        scale<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>baseWidth<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>baseWidth<span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token comment">// 为了方便数据变化时重绘，把画的逻辑抽出</span>
+   <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">//</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="_2-绘画及重绘"><a href="#_2-绘画及重绘" class="header-anchor">#</a> 2.绘画及重绘</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">reload</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 先清空Group</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>allGroup<span class="token punctuation">.</span><span class="token function">removeAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+      <span class="token comment">// 创建一个子group</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>group <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token comment">// 添加到最外面的group</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>allGroup<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>group<span class="token punctuation">)</span>
+      <span class="token comment">// 这个是调用的方法，画不会变的路口的背景</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>allGroup<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>drawUtil<span class="token punctuation">.</span><span class="token function">drawRoad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token comment">// 画相位</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">drawChart</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre></div><h2 id="_3-画相位元素"><a href="#_3-画相位元素" class="header-anchor">#</a> 3.画相位元素</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 把原有的group里的内容全清空，貌似有bug，直接this.group.removeAll第一个元素清不掉</span>
+<span class="token comment">// this.group.eachChild遍历然后单个清空也有问题，所以遍历+清空所有</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>group<span class="token punctuation">.</span><span class="token function">eachChild</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>group<span class="token punctuation">.</span><span class="token function">removeAll</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// 吧各种图形的参数抽出来，方便修改</span>
+<span class="token keyword">let</span> data <span class="token operator">=</span> <span class="token punctuation">{</span>
+  lineArrow<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">'white'</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  leftArrow<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">'white'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  rightArrow<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">60</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">'white'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  turnArrow<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">'white'</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  peopleLine<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">66</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 画各种元素</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>drawUtil<span class="token punctuation">.</span><span class="token function">drawLineArrow</span><span class="token punctuation">(</span><span class="token operator">...</span>data<span class="token punctuation">.</span>lineArrow<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>drawUtil<span class="token punctuation">.</span><span class="token function">drawLineArrow</span><span class="token punctuation">(</span><span class="token operator">...</span>data<span class="token punctuation">.</span>lineArrow<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>drawUtil<span class="token punctuation">.</span><span class="token function">drawTrunLeft</span><span class="token punctuation">(</span><span class="token operator">...</span>data<span class="token punctuation">.</span>leftArrow<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>drawUtil<span class="token punctuation">.</span><span class="token function">drawTrunRight</span><span class="token punctuation">(</span><span class="token operator">...</span>data<span class="token punctuation">.</span>rightArrow<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>drawUtil<span class="token punctuation">.</span><span class="token function">drawTrunAround</span><span class="token punctuation">(</span><span class="token operator">...</span>item<span class="token punctuation">.</span>turnArrow<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="_4-绘画的方法"><a href="#_4-绘画的方法" class="header-anchor">#</a> 4.绘画的方法</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> zrender <span class="token keyword">from</span> <span class="token string">'zrender'</span>
+<span class="token comment">// hover 框文本样式</span>
+<span class="token keyword">var</span> Text
+
+<span class="token keyword">var</span> drawUtil <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 画十字路口</span>
+  <span class="token function">drawRoad</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> group <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> roadLine <span class="token operator">=</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token number">75</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">75</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">75</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">75</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">102</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">75</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">75</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token number">75</span><span class="token punctuation">,</span> <span class="token number">102</span><span class="token punctuation">,</span> <span class="token number">75</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span>
+    <span class="token keyword">let</span> arcLine <span class="token operator">=</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span>
+    roadLine<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>drawUtil<span class="token punctuation">.</span><span class="token function">drawLine</span><span class="token punctuation">(</span><span class="token operator">...</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    arcLine<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>drawUtil<span class="token punctuation">.</span><span class="token function">drawArcLine</span><span class="token punctuation">(</span><span class="token operator">...</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> group
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// 绘制方块</span>
+  <span class="token function">drawRect</span><span class="token punctuation">(</span><span class="token parameter">fillColor<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> rect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Rect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> fillColor<span class="token punctuation">,</span> <span class="token comment">//填充颜色</span>
+        stroke<span class="token operator">:</span> <span class="token string">'rgba(40, 81, 136, 0.85098)'</span><span class="token punctuation">,</span> <span class="token comment">//描边颜色</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> x<span class="token punctuation">,</span>
+        y<span class="token operator">:</span> y<span class="token punctuation">,</span>
+        width<span class="token operator">:</span> width<span class="token punctuation">,</span>
+        height<span class="token operator">:</span> height<span class="token punctuation">,</span>
+        r<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">//圆角</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> rect
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">drawArcLine</span><span class="token punctuation">(</span><span class="token parameter">cx<span class="token punctuation">,</span> cy<span class="token punctuation">,</span> r<span class="token punctuation">,</span> startAngle<span class="token punctuation">,</span> endAngle</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> arcLine <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Arc</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        cx<span class="token operator">:</span> cx<span class="token punctuation">,</span>
+        cy<span class="token operator">:</span> cy<span class="token punctuation">,</span>
+        r<span class="token operator">:</span> r<span class="token punctuation">,</span>
+        startAngle<span class="token operator">:</span> startAngle<span class="token punctuation">,</span>
+        endAngle<span class="token operator">:</span> endAngle<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        stroke<span class="token operator">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> arcLine
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// 绘制线条</span>
+  <span class="token function">drawLine</span><span class="token punctuation">(</span><span class="token parameter">x1<span class="token punctuation">,</span> y1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> y2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> line <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Line</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x1<span class="token operator">:</span> x1<span class="token punctuation">,</span>
+        y1<span class="token operator">:</span> y1<span class="token punctuation">,</span>
+        x2<span class="token operator">:</span> x2<span class="token punctuation">,</span>
+        y2<span class="token operator">:</span> y2<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        stroke<span class="token operator">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token comment">// group.add(line);</span>
+    <span class="token keyword">return</span> line
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// 绘制虚线</span>
+  <span class="token function">drawDashedLine</span><span class="token punctuation">(</span><span class="token parameter">x1<span class="token punctuation">,</span> y1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> y2<span class="token punctuation">,</span> color<span class="token punctuation">,</span> lineWidth</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> line <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Line</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x1<span class="token operator">:</span> x1<span class="token punctuation">,</span>
+        y1<span class="token operator">:</span> y1<span class="token punctuation">,</span>
+        x2<span class="token operator">:</span> x2<span class="token punctuation">,</span>
+        y2<span class="token operator">:</span> y2<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        lineDash<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        stroke<span class="token operator">:</span> color<span class="token punctuation">,</span>
+        lineWidth<span class="token operator">:</span> lineWidth<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      zlevel<span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> line
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// 初始化悬浮文本</span>
+  <span class="token function">initHoverText</span><span class="token punctuation">(</span><span class="token parameter">zr<span class="token punctuation">,</span> fontSize</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Text <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Text</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fontSize<span class="token operator">:</span> fontSize<span class="token punctuation">,</span>
+        textBackgroundColor<span class="token operator">:</span> <span class="token string">'#FFF'</span><span class="token punctuation">,</span>
+        textBorderColor<span class="token operator">:</span> <span class="token string">'#000'</span><span class="token punctuation">,</span>
+        textBorderWidth<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        textBorderRadius<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        textPadding<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      zlevel<span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    zr<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>Text<span class="token punctuation">)</span>
+    Text<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// 绘制横向文本</span>
+  <span class="token function">drawHorizontalText</span><span class="token punctuation">(</span><span class="token parameter">str<span class="token punctuation">,</span> px<span class="token punctuation">,</span> py<span class="token punctuation">,</span> fontSize</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> group <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> text <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Text</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> <span class="token string">'#9ab8e3'</span><span class="token punctuation">,</span> <span class="token comment">// '#cae0ff'</span>
+        text<span class="token operator">:</span> str<span class="token punctuation">,</span>
+        fontSize<span class="token operator">:</span> fontSize<span class="token punctuation">,</span>
+        textFill<span class="token operator">:</span> <span class="token string">'#9ab8e3'</span><span class="token punctuation">,</span>
+        textBackgroundColor<span class="token operator">:</span> <span class="token string">'transparent'</span><span class="token punctuation">,</span>
+        width<span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+        textAlign<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">,</span>
+        overflow<span class="token operator">:</span> <span class="token string">'break'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'position'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>px<span class="token punctuation">,</span> py<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> group
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// 绘制纵向文本</span>
+  <span class="token function">drawVerticalText</span><span class="token punctuation">(</span><span class="token parameter">str<span class="token punctuation">,</span> dx<span class="token punctuation">,</span> dy<span class="token punctuation">,</span> fontSize</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> group <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> str<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> text <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Text</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        style<span class="token operator">:</span> <span class="token punctuation">{</span>
+          text<span class="token operator">:</span> str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">,</span>
+          fontSize<span class="token operator">:</span> fontSize<span class="token punctuation">,</span>
+          textFill<span class="token operator">:</span> <span class="token string">'#FF4949'</span><span class="token punctuation">,</span>
+          textBackgroundColor<span class="token operator">:</span> <span class="token string">'#FFF'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token keyword">let</span> y <span class="token operator">=</span> <span class="token number">14</span> <span class="token operator">*</span> i
+      text<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'position'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">)</span>
+      group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    group<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'position'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>dx<span class="token punctuation">,</span> dy<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> group
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// 绘制上箭头</span>
+  <span class="token function">drawUpArrow</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> r<span class="token punctuation">,</span> height<span class="token punctuation">,</span> color</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> group <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> isogon <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Isogon</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> x<span class="token punctuation">,</span>
+        y<span class="token operator">:</span> y<span class="token punctuation">,</span>
+        r<span class="token operator">:</span> r<span class="token punctuation">,</span> <span class="token comment">//认识半径</span>
+        n<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> color<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>isogon<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> rect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Rect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//填充颜色</span>
+        stroke<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//描边颜色</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> x <span class="token operator">-</span> r <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">,</span>
+        y<span class="token operator">:</span> y <span class="token operator">-</span> r <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        width<span class="token operator">:</span> r <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        height<span class="token operator">:</span> height<span class="token punctuation">,</span>
+        r<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">//圆角</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>rect<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> group
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// 绘制右箭头</span>
+  <span class="token function">drawLineArrow</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> r<span class="token punctuation">,</span> height<span class="token punctuation">,</span> color<span class="token punctuation">,</span> rotation</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> group <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> isogon <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Isogon</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> x<span class="token punctuation">,</span>
+        y<span class="token operator">:</span> y<span class="token punctuation">,</span>
+        r<span class="token operator">:</span> r<span class="token punctuation">,</span>
+        n<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> color<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token comment">// 三角形旋转</span>
+    <span class="token keyword">let</span> rotationPI <span class="token operator">=</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">4</span> <span class="token operator">/</span> <span class="token number">3</span>
+    isogon<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'rotation'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>rotationPI<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    isogon<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'origin'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>isogon<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> rect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Rect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//填充颜色</span>
+        stroke<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//描边颜色</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> x <span class="token operator">-</span> r <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">-</span> height<span class="token punctuation">,</span>
+        y<span class="token operator">:</span> y <span class="token operator">-</span> r <span class="token operator">/</span> <span class="token number">12</span><span class="token punctuation">,</span>
+        width<span class="token operator">:</span> height<span class="token punctuation">,</span>
+        height<span class="token operator">:</span> r <span class="token operator">/</span> <span class="token number">6</span><span class="token punctuation">,</span>
+        r<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">//圆角</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>rect<span class="token punctuation">)</span>
+    rotation
+      <span class="token operator">?</span> group<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          rotation<span class="token operator">:</span> <span class="token punctuation">[</span>rotation<span class="token punctuation">]</span><span class="token punctuation">,</span>
+          origin<span class="token operator">:</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token operator">:</span> <span class="token string">''</span>
+    <span class="token keyword">return</span> group
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// 右转箭头</span>
+  <span class="token function">drawTrunRight</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> r<span class="token punctuation">,</span> height<span class="token punctuation">,</span> color<span class="token punctuation">,</span> rotation</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> group <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> isogon <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Isogon</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> x<span class="token punctuation">,</span>
+        y<span class="token operator">:</span> y <span class="token operator">-</span> <span class="token number">7.5</span><span class="token punctuation">,</span>
+        r<span class="token operator">:</span> r<span class="token punctuation">,</span>
+        n<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> color<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> rotationPI <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">4</span>
+    isogon<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'rotation'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>rotationPI<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    isogon<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'origin'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>isogon<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> rect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Rect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//填充颜色</span>
+        stroke<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//描边颜色</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> x <span class="token operator">-</span> r <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">-</span> height<span class="token punctuation">,</span>
+        y<span class="token operator">:</span> y <span class="token operator">-</span> r <span class="token operator">/</span> <span class="token number">12</span><span class="token punctuation">,</span>
+        width<span class="token operator">:</span> height <span class="token operator">+</span> r <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        height<span class="token operator">:</span> r <span class="token operator">/</span> <span class="token number">6</span><span class="token punctuation">,</span>
+        r<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">//圆角</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>rect<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> rect2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Rect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//填充颜色</span>
+        stroke<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//描边颜色</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> x<span class="token punctuation">,</span>
+        y<span class="token operator">:</span> y<span class="token punctuation">,</span>
+        width<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        height<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        r<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">//圆角</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>rect2<span class="token punctuation">)</span>
+    rotation
+      <span class="token operator">?</span> group<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          rotation<span class="token operator">:</span> <span class="token punctuation">[</span>rotation<span class="token punctuation">]</span><span class="token punctuation">,</span>
+          origin<span class="token operator">:</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token operator">:</span> <span class="token string">''</span>
+    <span class="token keyword">return</span> group
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// 左转箭头</span>
+  <span class="token function">drawTrunLeft</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> r<span class="token punctuation">,</span> height<span class="token punctuation">,</span> color<span class="token punctuation">,</span> rotation</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> group <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> isogon <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Isogon</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> x<span class="token punctuation">,</span>
+        y<span class="token operator">:</span> y <span class="token operator">-</span> <span class="token number">7.5</span><span class="token punctuation">,</span>
+        r<span class="token operator">:</span> r<span class="token punctuation">,</span>
+        n<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> color<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> rotationPI <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">8</span>
+    isogon<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'rotation'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>rotationPI<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    isogon<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'origin'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>isogon<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> rect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Rect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//填充颜色</span>
+        stroke<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//描边颜色</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> x <span class="token operator">-</span> r <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">-</span> height<span class="token punctuation">,</span>
+        y<span class="token operator">:</span> y <span class="token operator">-</span> r <span class="token operator">/</span> <span class="token number">12</span><span class="token punctuation">,</span>
+        width<span class="token operator">:</span> height <span class="token operator">+</span> r <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        height<span class="token operator">:</span> r <span class="token operator">/</span> <span class="token number">6</span><span class="token punctuation">,</span>
+        r<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">//圆角</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>rect<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> rect2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Rect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//填充颜色</span>
+        stroke<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//描边颜色</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> x <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        y<span class="token operator">:</span> y <span class="token operator">-</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        width<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        height<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        r<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">//圆角</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>rect2<span class="token punctuation">)</span>
+    rotation
+      <span class="token operator">?</span> group<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          rotation<span class="token operator">:</span> <span class="token punctuation">[</span>rotation<span class="token punctuation">]</span><span class="token punctuation">,</span>
+          origin<span class="token operator">:</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token operator">:</span> <span class="token string">''</span>
+    <span class="token keyword">return</span> group
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// 调头箭头</span>
+  <span class="token function">drawTrunAround</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> r<span class="token punctuation">,</span> height<span class="token punctuation">,</span> color<span class="token punctuation">,</span> rotation</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> group <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> isogon <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Isogon</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> x <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        y<span class="token operator">:</span> y <span class="token operator">-</span> <span class="token number">7.5</span><span class="token punctuation">,</span>
+        r<span class="token operator">:</span> r<span class="token punctuation">,</span>
+        n<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> color<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> rotationPI <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span>
+    isogon<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'rotation'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>rotationPI<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    isogon<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'origin'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>isogon<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> rect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Rect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//填充颜色</span>
+        stroke<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//描边颜色</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> x <span class="token operator">-</span> r <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">-</span> height<span class="token punctuation">,</span>
+        y<span class="token operator">:</span> y <span class="token operator">-</span> r <span class="token operator">/</span> <span class="token number">12</span><span class="token punctuation">,</span>
+        width<span class="token operator">:</span> height <span class="token operator">+</span> r <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        height<span class="token operator">:</span> r <span class="token operator">/</span> <span class="token number">6</span><span class="token punctuation">,</span>
+        r<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">//圆角</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>rect<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> rect2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Rect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//填充颜色</span>
+        stroke<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//描边颜色</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> x <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        y<span class="token operator">:</span> y <span class="token operator">-</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        width<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        height<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        r<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">//圆角</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>rect2<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> rect3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Rect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fill<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//填充颜色</span>
+        stroke<span class="token operator">:</span> color<span class="token punctuation">,</span> <span class="token comment">//描边颜色</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x<span class="token operator">:</span> x <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        y<span class="token operator">:</span> y <span class="token operator">-</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        width<span class="token operator">:</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span>
+        height<span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>
+        r<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">//圆角</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>rect3<span class="token punctuation">)</span>
+    rotation
+      <span class="token operator">?</span> group<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          rotation<span class="token operator">:</span> <span class="token punctuation">[</span>rotation<span class="token punctuation">]</span><span class="token punctuation">,</span>
+          origin<span class="token operator">:</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token operator">:</span> <span class="token string">''</span>
+    <span class="token keyword">return</span> group
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">drawPeople</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Path</span><span class="token punctuation">(</span>
+      zrender<span class="token punctuation">.</span>path<span class="token punctuation">.</span><span class="token function">createFromString</span><span class="token punctuation">(</span>
+        <span class="token string">'M539.282416 283.737123q-29.101243 0-55.019538-11.367673t-45.015986-30.465364-30.465364-45.015986-11.367673-55.019538 11.367673-55.019538 30.465364-45.015986 45.015986-30.465364 55.019538-11.367673 55.019538 11.367673 45.015986 30.465364 30.010657 45.015986 10.912966 55.019538-10.912966 55.019538-30.010657 45.015986-45.015986 30.465364-55.019538 11.367673zM741.172291 411.055062q24.554174 18.188277 40.468917 42.287744t15.914742 48.653641l0 90.031972q0 15.460036-17.73357 23.64476t-39.104796 8.184725-39.104796-7.730018-17.73357-25.008881l0-38.195382q0-13.641208-8.184725-20.461812t-16.369449-11.367673q-9.094139-4.547069-20.916519 4.092362t-11.82238 29.55595l0 240.085258q0 21.825933 14.550622 40.01421t35.46714 33.648313q18.188277 12.731794 30.920071 25.463588l30.010657 30.010657q5.456483 5.456483 4.092362 16.824156t-7.730018 24.099467-15.914742 25.463588-21.371226 20.007105-24.099467 7.275311-23.190053-11.82238q-16.369449-17.278863-26.373002-27.737123t-17.73357-18.642984-15.914742-15.460036-20.007105-20.007105q-23.64476-23.64476-40.468917-60.476021t-16.824156-73.207815l0-73.662522q-10.912966 13.641208-18.642984 21.825933t-17.73357 27.282416q-3.637655 7.275311-7.275311 19.097691t-6.820604 24.554174-5.001776 25.463588-1.818828 21.825933l0 75.48135q0 17.278863-17.73357 25.918295t-39.104796 8.184725-39.104796-10.003552-17.73357-28.646536l0-66.387211q0-35.46714 10.912966-62.749556t24.554174-58.202487q18.188277-41.833037 26.827709-67.296625t13.186501-35.46714q9.094139-20.916519 9.094139-37.285968l0-29.101243q-10.003552 6.365897-16.824156 11.82238t-18.642984 20.007105q-11.82238 13.641208-24.099467 17.73357t-38.650089 4.092362l-59.111901 0q-21.825933 0-32.284192-17.73357t-10.003552-38.650089 11.367673-38.650089 31.829485-17.73357l54.564831 0q10.912966 0 17.73357-2.728242t12.731794-8.184725 12.731794-12.731794 16.824156-16.369449q12.731794-10.912966 25.918295-32.284192t25.008881-43.197158q13.641208-25.463588 26.373002-54.564831 19.097691 0.909414 35.46714 1.818828 14.550622 0.909414 29.55595 1.364121t25.008881 0.454707 22.735346-0.454707 24.554174-1.364121q13.641208-0.909414 28.191829-1.818828 24.554174 15.460036 47.28952 28.191829 19.097691 11.82238 38.195382 22.735346t29.101243 18.188277z'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          style<span class="token operator">:</span> <span class="token punctuation">{</span>
+            fill<span class="token operator">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
+    <span class="token keyword">var</span> rect <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">getBoundingRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> m <span class="token operator">=</span> rect<span class="token punctuation">.</span><span class="token function">calculateTransform</span><span class="token punctuation">(</span><span class="token punctuation">{</span> x<span class="token operator">:</span> <span class="token number">2.6</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token number">2.6</span><span class="token punctuation">,</span> width<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> height<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    path<span class="token punctuation">.</span><span class="token function">applyTransform</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span>
+    path<span class="token punctuation">.</span>scale <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> path
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// 人行道</span>
+  <span class="token function">drawPeopleRoad</span><span class="token punctuation">(</span><span class="token parameter">x1<span class="token punctuation">,</span> y1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> y2<span class="token punctuation">,</span> type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> group <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Group</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> line <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Line</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        x1<span class="token operator">:</span> x1<span class="token punctuation">,</span>
+        y1<span class="token operator">:</span> y1<span class="token punctuation">,</span>
+        x2<span class="token operator">:</span> x2<span class="token punctuation">,</span>
+        y2<span class="token operator">:</span> y2<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        lineDash<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        stroke<span class="token operator">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
+        lineWidth<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      zlevel<span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> leftArrow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Polyline</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        stroke<span class="token operator">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
+        lineWidth<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        points<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">[</span>x1<span class="token punctuation">,</span> y1 <span class="token operator">-</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">[</span>x1 <span class="token operator">-</span> <span class="token number">3</span><span class="token punctuation">,</span> y1<span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">[</span>x1<span class="token punctuation">,</span> y1 <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">//坐标集合</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    leftArrow<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'rotation'</span><span class="token punctuation">,</span> type <span class="token operator">===</span> <span class="token number">2</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    leftArrow<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'origin'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>x1<span class="token punctuation">,</span> y1<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>leftArrow<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> rightArrow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Polyline</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        stroke<span class="token operator">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
+        lineWidth<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      shape<span class="token operator">:</span> <span class="token punctuation">{</span>
+        points<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">[</span>x2<span class="token punctuation">,</span> y2 <span class="token operator">-</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">[</span>x2 <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">,</span> y2<span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">[</span>x2<span class="token punctuation">,</span> y2 <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">//坐标集合</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    rightArrow<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'rotation'</span><span class="token punctuation">,</span> type <span class="token operator">===</span> <span class="token number">2</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    rightArrow<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'origin'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>x2<span class="token punctuation">,</span> y2<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    group<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>rightArrow<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> group
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// 绘制×</span>
+  <span class="token function">drawX</span><span class="token punctuation">(</span><span class="token parameter">Obj<span class="token punctuation">,</span> Color<span class="token punctuation">,</span> fontSize</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">zrender<span class="token punctuation">.</span>Text</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      style<span class="token operator">:</span> <span class="token punctuation">{</span>
+        text<span class="token operator">:</span> <span class="token string">'×'</span><span class="token punctuation">,</span>
+        fontSize<span class="token operator">:</span> fontSize<span class="token punctuation">,</span>
+        textFill<span class="token operator">:</span> Color<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      position<span class="token operator">:</span> <span class="token punctuation">[</span>Obj<span class="token punctuation">.</span>x <span class="token operator">-</span> <span class="token number">7</span><span class="token punctuation">,</span> Obj<span class="token punctuation">.</span>y <span class="token operator">-</span> <span class="token number">11</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'mouseover'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Text<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        Text<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'position'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>Obj<span class="token punctuation">.</span>x<span class="token punctuation">,</span> Obj<span class="token punctuation">.</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        Text<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          style<span class="token operator">:</span> <span class="token punctuation">{</span>
+            text<span class="token operator">:</span> Obj<span class="token punctuation">.</span>txt<span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'mouseout'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Text<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> drawUtil
+</code></pre></div></div> <div class="content-time" data-v-09525e5c><time datetime="2021-1-21 8:00:00" class="time-text" data-v-09525e5c>Create Time: 2021-1-21 8:00:00
+    </time> <time datetime="2022-2-23 16:08:29" class="time-text" data-v-09525e5c>Last Updated: 2022-2-23 16:08:29
+    </time></div></article> <section class="flex-xb main info-nav" data-v-203269c1 data-v-77ce606b><!----> <a href="/posts/PDF%E4%B8%8B%E8%BD%BD.html" class="flex-xb nav-item" data-v-203269c1><div class="flex-xcc item-img" data-v-203269c1><img data-src="https://picsum.photos/536/354?random&amp;date=2021-04-10" loading="lazy" alt="PDF下载" class="img lazy" data-v-203269c1></div> <article class="flex-ysc item-content" data-v-203269c1><h2 class="content-title" data-v-203269c1>PDF下载</h2> <div class="content" data-v-203269c1><blockquote>
+<p>PDF 下载</p>
+</blockquote>
+</div></article></a></section> <!----></section></section> <footer class="footer" data-v-109158d8 data-v-98a81704><nav class="link-list" data-v-109158d8><a href="https://github.com/guhun-yegui" target="_blank" rel="noopener noreferrer" class="list-item" data-v-109158d8>Github</a></nav></footer></section><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6134664a.js" defer></script><script src="/assets/js/35.3586c8c3.js" defer></script>
+  </body>
+</html>
